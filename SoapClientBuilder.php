@@ -173,12 +173,13 @@ class SoapClientBuilder extends AbstractSoapBuilder
     /**
      * Configure proxy.
      *
-     * @param string $host     Host
-     * @param int    $port     Port
-     * @param string $login    Login
+     * @param string $host Host
+     * @param int $port Port
+     * @param string $login Login
      * @param string $password Password
-     * @param int    $auth     Authentication method
+     * @param int $auth Authentication method
      *
+     * @throws \InvalidArgumentException
      * @return \BeSimple\SoapClient\SoapClientBuilder
      */
     public function withProxy($host, $port, $login = null, $password = null, $auth = null)
@@ -205,11 +206,11 @@ class SoapClientBuilder extends AbstractSoapBuilder
     /**
     * SOAP attachment type Base64.
     *
-    * @return \BeSimple\SoapServer\SoapServerBuilder
+    * @return \BeSimple\SoapClient\SoapClientBuilder
     */
     public function withBase64Attachments()
     {
-        $this->options['attachment_type'] = Helper::ATTACHMENTS_TYPE_BASE64;
+        $this->soapOptions['attachment_type'] = Helper::ATTACHMENTS_TYPE_BASE64;
 
         return $this;
     }
@@ -217,11 +218,11 @@ class SoapClientBuilder extends AbstractSoapBuilder
     /**
      * SOAP attachment type SwA.
      *
-     * @return \BeSimple\SoapServer\SoapServerBuilder
+     * @return \BeSimple\SoapClient\SoapClientBuilder
      */
     public function withSwaAttachments()
     {
-        $this->options['attachment_type'] = Helper::ATTACHMENTS_TYPE_SWA;
+        $this->soapOptions['attachment_type'] = Helper::ATTACHMENTS_TYPE_SWA;
 
         return $this;
     }
@@ -229,11 +230,11 @@ class SoapClientBuilder extends AbstractSoapBuilder
     /**
      * SOAP attachment type MTOM.
      *
-     * @return \BeSimple\SoapServer\SoapServerBuilder
+     * @return \BeSimple\SoapClient\SoapClientBuilder
      */
     public function withMtomAttachments()
     {
-        $this->options['attachment_type'] = Helper::ATTACHMENTS_TYPE_MTOM;
+        $this->soapOptions['attachment_type'] = Helper::ATTACHMENTS_TYPE_MTOM;
 
         return $this;
     }
